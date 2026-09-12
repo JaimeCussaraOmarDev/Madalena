@@ -73,8 +73,8 @@ export default function PedidoNamoro() {
             key={i}
             className="absolute text-pink-400"
             initial={{
-              x: Math.random() * window.innerWidth,
-              y: window.innerHeight + 50,
+              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 0),
+              y: typeof window !== 'undefined' ? window.innerHeight + 50 : 50,
               scale: Math.random() * 0.8 + 0.4
             }}
             animate={{
