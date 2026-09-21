@@ -1,0 +1,128 @@
+﻿generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String      @id @default(cuid())
+  name          String
+  email         String      @unique
+  passwordHash  String
+  storeName     String
+  nuit          String?
+  createdAt     DateTime    @default(now())
+  
+  products      Product[]
+  transactions  Transaction[]
+  clients       Client[]
+  employees     Employee[]
+}
+
+model Employee {
+  id            String      @id @default(cuid())
+  name          String
+  pin           String
+  role          Role        @default(USER)
+  storeId       String
+  store         User        @relation(fields: [storeId], references: [id])
+  
+  transactions  Transaction[]
+}
+
+enum Role {
+  USER
+  MANAGER
+}
+
+model Product {
+  id            String      @id @default(cuid())
+  name          String
+  sku           String?
+  buyPrice      Decimal
+  salePrice     Decimal
+  stockQuantity Int
+  category      String?
+  
+  storeId       String
+  store         User        @relation(fields: [storeId], references: [id])
+  
+  transactionItems TransactionItem[]
+}
+
+model Client {
+  id            String      @id @default(cuid())
+  name          String
+  phone         String?
+  address       String?
+  
+  storeId       String
+  store         User        @relation(fields: [storeId], references: [id])
+  
+  creditBalance Decimal     @default(0)
+  creditHistory CreditRecord[]
+}
+
+model Transaction {
+  id            String      @id @default(cuid())
+  type          TransType
+  totalValue    Decimal
+  paymentMethod PayMethod
+  description   String?
+  
+  date          DateTime    @default(now())
+  
+  storeId       String
+  store         User        @relation(fields: [storeId], references: [id])
+  
+  employeeId    String?
+  employee      Employee?   @relation(fields: [employeeId], references: [id])
+  
+  items         TransactionItem[]
+  clientCredit  CreditRecord?
+}
+
+enum TransType {
+  SALE
+  PURCHASE
+  EXPENSE
+  DEBIT_PAY
+}
+
+enum PayMethod {
+  CASH
+  MPESA
+  TPA
+  CREDIT
+}
+
+model TransactionItem {
+  id            String      @id @default(cuid())
+  transactionId String
+  transaction   Transaction @relation(fields: [transactionId], references: [id])
+  productId     String
+  product       Product     @relation(fields: [productId], references: [id])
+  quantity      Int
+  unitPrice     Decimal
+  unitCost      Decimal
+}
+
+model CreditRecord {
+  id            String      @id @default(cuid())
+  clientId      String
+  client        Client      @relation(fields: [clientId], references: [id])
+  transactionId String      @unique
+  transaction   Transaction @relation(fields: [transactionId], references: [id])
+  
+  amount        Decimal
+  dueDate       DateTime?
+  status        CreditStatus @default(PENDING)
+}
+
+enum CreditStatus {
+  PENDING
+  PAID
+}

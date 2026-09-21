@@ -116,10 +116,9 @@ export default function PedidoNamoro() {
               <Sparkles size={48} />
             </div>
             <h1 className="mb-2 text-2xl font-light tracking-wide font-serif text-rose-100">
-              Tatiana George Amade...
-            </h1>
+              Madalena Alexandre </h1>
             <p className="mb-6 text-xl font-light tracking-wide font-serif text-rose-200">
-              Tenho uma pergunta muito importante para te fazer... ❤️
+              Eu se que isso pode nao fazer nenhum sentido agora mais tenho uma pergunta muito importante para te fazer... ❤️
             </p>
             <button
               onClick={() => setEtapa('surpresa')}
@@ -128,7 +127,7 @@ export default function PedidoNamoro() {
               Abrir surpresa
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </button>
-            <span className="mt-6 text-xs text-rose-300/50">Com todo meu amor, Jaime</span>
+            <span className="mt-6 text-xs text-rose-300/50">Com todo meu amor, Jaime Cussara Omar</span>
           </motion.div>
         )}
 
@@ -145,8 +144,7 @@ export default function PedidoNamoro() {
               <Heart size={56} fill="currentColor" className="animate-pulse" />
             </div>
             <h2 className="mb-6 text-xl font-light leading-relaxed font-serif text-rose-100">
-              Tatiana, desde que você entrou na minha vida, cada dia ganhou mais cor, mais sentido e um brilho único que eu nunca tinha sentido antes.
-            </h2>
+              Madalena , desde que  te conheci na Escola, e voltar a ter um contacto contigo... Percebi que ha pessoas que iluminam os nossos dias sem esforco. Entraste na minha vida e transformaste tudo. Quer dar me a oportunidade de fazer-te a pessoa mais feliz do mundo e namorar comigo?.</h2>
             <button
               onClick={() => setEtapa('pergunta')}
               className="rounded-full bg-rose-500 px-8 py-3 text-sm font-medium tracking-wider text-white shadow-md transition hover:bg-rose-600"
@@ -169,7 +167,7 @@ export default function PedidoNamoro() {
               <Sparkles size={40} />
             </div>
             <h2 className="mb-8 text-3xl md:text-4xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-pink-300 to-white">
-              Tatiana, quer namorar comigo? 🥹❤️
+              Madalena, quer namorar comigo? 🥹❤️
             </h2>
 
             {naoCount > 0 && (
@@ -212,17 +210,17 @@ export default function PedidoNamoro() {
               <Heart size={56} fill="currentColor" />
             </div>
             <h1 className="mb-2 text-3xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-300 via-pink-400 to-white">
-              EU SABIA, TATIANA! ❤️🥹
+              EU SABIA, Madalena! ❤️🥹
             </h1>
             <p className="mb-4 text-rose-200/80 text-sm font-light">
-              Agora começa oficialmente a nossa história mais linda. Com todo o meu amor, Jaime.
+              Agora começa oficialmente a nossa história mais linda. Com todo o meu amor, Jaime C. Omar.
             </p>
 
             {/* Foto Real de Vocês */}
             <div className="w-full max-w-sm mb-5 rounded-2xl overflow-hidden border-2 border-rose-400/40 shadow-xl">
               <img 
                 src="/foto.jpg" 
-                alt="Tatiana e Jaime" 
+                alt="Madalena e Jaime" 
                 className="w-full h-auto object-cover max-h-72"
               />
             </div>
